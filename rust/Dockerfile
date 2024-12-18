@@ -3,7 +3,7 @@ ARG RUST_VERSION="1.78.0"
 FROM rust:${RUST_VERSION}-slim
 
 RUN apt-get update -y && \
-    apt-get install -y git ninja-build gettext cmake unzip curl g++ ripgrep fzf tmux && \
+    apt-get install -y git ninja-build gettext cmake unzip curl g++ ripgrep fzf tmux pkg-config libssl-dev && \
     apt-get clean
 
 WORKDIR /home
