@@ -112,3 +112,4 @@ set statusline+=\ %3p%%\                " percentage
 --vim.opt.shiftwidth = 4
 
 require("config.lazy")
+require("config.lsp")
