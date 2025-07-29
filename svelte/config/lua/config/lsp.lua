@@ -24,8 +24,6 @@ vim.diagnostic.config({
   }
 })
 
-vim.o.winborder = "rounded"
-
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
@@ -38,3 +36,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("th", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", "Toggle inlay hints")
   end
 })
+
+vim.keymap.set(
+  'n', 'K',
+  function()
+    vim.lsp.buf.hover({border = "rounded", title = " hover "})
+  end,
+  {desc = 'Hover Documentation'}
+)
