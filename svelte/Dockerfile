@@ -1,4 +1,4 @@
-FROM node:lts-bullseye-slim
+FROM node:24.4.1-bullseye-slim
 
 RUN apt-get update -y && \
     apt-get install -y git ninja-build gettext cmake unzip curl g++ ripgrep fzf tmux pkg-config && \
