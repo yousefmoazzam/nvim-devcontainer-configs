@@ -1,0 +1,31 @@
+return {
+  "stevearc/conform.nvim",
+  event = { "BufReadPre", "BufNewFile" },
+  config = function()
+    local conform = require("conform")
+
+    conform.setup({
+      formatters = {
+        c3fmt = {
+          command = "c3fmt",
+          args = { "--stdin" },
+        }
+      },
+      formatters_by_ft = {
+        c3 = { "c3fmt" },
+      },
+      format_on_save = {
+        lsp_fallback = false,
+        async = false,
+        timeout_ms = 500
+      }
+    })
+    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+      conform.format({
+        lsp_fallback = false,
+        async = false,
+        timeout_ms = 500
+      })
+    end, { desc = "Format file or range (in visual mode)" })
+  end
+}
